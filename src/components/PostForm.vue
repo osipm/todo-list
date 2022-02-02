@@ -1,11 +1,15 @@
 <template>
+<h2>создать пост</h2>
     <form form @submit.prevent>
   <my-input
+  v-focus
+  class="minput"
   v-model="post.title" 
    type="text"
     placeholder="name"/>
   
   <my-input
+class="minput"
  v-model="post.body"   
   type="text" 
   placeholder="description"/>
@@ -31,7 +35,7 @@ export default {
     },
     methods: {
         createPost(){
-        this.id = Date.now();
+        this.post.id = Date.now();
         this.$emit("create", this.post )
         this.post = {title:'',
         body: ''}
@@ -43,5 +47,8 @@ export default {
 form {
   display: flex;
   flex-direction: column;
+}
+.minput{
+    margin-top: 15px;
 }
 </style>  

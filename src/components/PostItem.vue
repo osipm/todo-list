@@ -1,10 +1,19 @@
 <template>
      <div class="post">
          <div>
-  <div>назва {{post.title}}</div>
-  <div>назва {{post.body}}</div>
+    <div>{{post.id}}</div>
+  <div><strong>Назва</strong> {{post.title}}</div>
+  <div><strong>Назва</strong> {{post.body}}</div>
 </div>
-     <div class="post__btns"><my-button>удалити</my-button></div>
+     <div class="post__btns">
+        
+         <my-button 
+         @click="$router.push(`/posts/${post.id}`)">
+         Відкрити</my-button>
+         
+         <my-button 
+         @click="$emit('remove', post)">
+         удалити</my-button></div>
   </div>
 </template>
 
@@ -30,5 +39,9 @@ justify-content: space-between;
 padding: 15px;
 border: 2px solid teal;
 margin-top: 15px;
+}
+
+.post__btns{
+    display: flex;
 }
 </style>
